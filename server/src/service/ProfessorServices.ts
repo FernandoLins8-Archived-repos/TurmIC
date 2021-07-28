@@ -22,6 +22,13 @@ class ProfessorServices {
 
     return newProfessor
   }
+
+  async showProfessors() {
+    const professorRepository = getCustomRepository(ProfessorRepository)
+    const professors = await professorRepository.find()
+
+    return professors
+  }
 }
 
 export default ProfessorServices
