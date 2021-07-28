@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryColumn } from "typeorm";
+import { Column, Entity, JoinColumn, OneToMany, PrimaryColumn } from "typeorm";
+import Subject from "./Subject";
 
 @Entity('professor')
 class Professor {
@@ -10,6 +11,10 @@ class Professor {
 
   @Column()
   site: string
+
+  @JoinColumn()
+  @OneToMany(type => Subject, subject => subject.professor)
+  subject: Subject[]
 }
 
 export default Professor
