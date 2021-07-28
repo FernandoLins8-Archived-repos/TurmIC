@@ -12,7 +12,7 @@ export class createOtherLinks1627443810433 implements MigrationInterface {
                     isPrimary: true,
                 },
                 {
-                    name: 'week_day',
+                    name: 'name',
                     type: 'varchar',
                 },
                 {
