@@ -18,7 +18,11 @@ export class createSubjectTag1627443734528 implements MigrationInterface {
                 {
                     name: 'course',
                     type: 'varchar',
-                }
+                },
+                {
+                    name: 'period',
+                    type: 'varchar',
+                },
             ]
         }))
     }

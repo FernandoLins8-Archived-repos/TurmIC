@@ -12,10 +12,6 @@ export class createSubject1627443775726 implements MigrationInterface {
                     isPrimary: true,
                 },
                 {
-                    name: 'period',
-                    type: 'varchar',
-                },
-                {
                     name: 'semester',
                     type: 'varchar',
                 },

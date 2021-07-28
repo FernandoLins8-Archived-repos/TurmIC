@@ -12,13 +12,14 @@ class SubjectTagController {
     }
     
     try {
-      const { code, name, course } = req.body
+      const { code, name, course, period } = req.body
       const subjectTagService = new SubjectTagServices()
 
       const subjectTag = await subjectTagService.createSubjectTag({
         code,
         name,
-        course
+        course,
+        period
       })
       
       return res.json(subjectTag)

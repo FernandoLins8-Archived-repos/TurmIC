@@ -10,6 +10,9 @@ class SubjectTag {
 
   @Column()
   course: string
+
+  @Column()
+  period: string
 }
 
 export default SubjectTag
