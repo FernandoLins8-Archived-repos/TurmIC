@@ -1,6 +1,6 @@
 import { getCustomRepository } from 'typeorm'
 
-import ProfessorRepository from '../repositories/ProfessorRepositories'
+import ProfessorRepository from '../repositories/ProfessorRepository'
 
 interface IProfessorCreateReq {
   name: string
