@@ -14,17 +14,14 @@ export class createOtherLinks1627443810433 implements MigrationInterface {
                 {
                     name: 'week_day',
                     type: 'varchar',
-                    isNullable: false,
                 },
                 {
                     name: 'link',
                     type: 'varchar',
-                    isNullable: false,
                 },
                 {
                     name: 'subject_id',
                     type: 'varchar',
-                    isNullable: false,
                 },
             ],
             foreignKeys: [

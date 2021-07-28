@@ -14,32 +14,35 @@ export class createSubject1627443775726 implements MigrationInterface {
                 {
                     name: 'period',
                     type: 'varchar',
-                    isNullable: false,
                 },
                 {
                     name: 'semester',
                     type: 'varchar',
-                    isNullable: false,
                 },
                 {
                     name: 'whatsapp',
                     type: 'varchar',
+                    isNullable: true,
                 },
                 {
                     name: 'telegram',
                     type: 'varchar',
+                    isNullable: true,
                 },
                 {
                     name: 'classroom',
                     type: 'varchar',
+                    isNullable: true,
                 },
                 {
                     name: 'meet',
                     type: 'varchar',
+                    isNullable: true,
                 },
                 {
                     name: 'site',
                     type: 'varchar',
+                    isNullable: true,
                 },
                 {
                     name: 'subject_tag_code',
@@ -48,7 +51,6 @@ export class createSubject1627443775726 implements MigrationInterface {
                 {
                     name: 'professor_email',
                     type: 'varchar',
-                    isNullable: false,
                 },
             ],
             foreignKeys: [

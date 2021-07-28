@@ -14,22 +14,18 @@ export class createSchedule1627443847952 implements MigrationInterface {
                 {
                     name: 'week_day',
                     type: 'varchar',
-                    isNullable: false,
                 },
                 {
                     name: 'start',
                     type: 'varchar',
-                    isNullable: false,
                 },
                 {
                     name: 'finish',
                     type: 'varchar',
-                    isNullable: false,
                 },
                 {
                     name: 'subject_id',
                     type: 'varchar',
-                    isNullable: false,
                 },
             ],
             foreignKeys: [

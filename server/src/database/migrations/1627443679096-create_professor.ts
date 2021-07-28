@@ -9,7 +9,6 @@ export class createProfessor1627443679096 implements MigrationInterface {
                 {
                     name: 'name',
                     type: 'varchar',
-                    isNullable: false,
                 },
                 {
                     name: 'email',
@@ -19,6 +18,7 @@ export class createProfessor1627443679096 implements MigrationInterface {
                 {
                     name: 'site',
                     type: 'varchar',
+                    isNullable: true
                 }
             ]
         }))
