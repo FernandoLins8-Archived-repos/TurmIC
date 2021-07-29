@@ -1,3 +1,4 @@
 node_modules/
 
 database.sqlite
+server/src/database/seeds/professors.ts
