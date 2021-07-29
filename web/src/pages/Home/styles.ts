@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  background: var(--gray-100);
-  height: 100%;
   width: 100%;
 `;
 
@@ -15,6 +13,7 @@ export const Header = styled.div`
   height: 64px;
   position: fixed;
   top: 0;
+  z-index: 2;
 
   border-bottom: 1px solid var(--gray-300);
 
@@ -39,18 +38,31 @@ export const Header = styled.div`
   }
 `;
 
-export const List = styled.div` 
-  position: relative;
-  top: 64px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+export const Body = styled.div`
+  background: var(--gray-100);
 
+  position: relative;
+  top: 56px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 48px 48px;
+`;
+
+export const List = styled.div` 
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  max-width: 768px;
 `;
 
 export const Item = styled.div`
   padding: 24px 48px 48px 24px;
-  margin-top: 24px;
+  width: 368px;
+  margin-bottom: 24px;
 
   border-radius: 8px;
   border: 1px solid var(--gray-300);
@@ -63,7 +75,7 @@ export const Item = styled.div`
   .subject {
     color: var(--gray-700);
     font-weight: bold;
-    font-size: 20px;
+    font-size: 18px;
   }
 
   .code {
