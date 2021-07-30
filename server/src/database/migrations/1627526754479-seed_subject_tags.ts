@@ -1,20 +1,20 @@
 import { createQueryBuilder, MigrationInterface, QueryRunner } from 'typeorm';
 
-import SubjectTag from '../../entities/SubjectTag'
-import { courseTags } from '../seeds/subject-tags'
+import Subject from '../../entities/Subject'
+import { courseSubjects } from '../seeds/subjects'
 
-export class seedSubjectTags1627526754479 implements MigrationInterface {
+export class seedSubject1627526754479 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
-        courseTags.forEach(tag => {
+        courseSubjects.forEach(subject => {
             createQueryBuilder()
             .insert()
-            .into(SubjectTag)
+            .into(Subject)
             .values([{ 
-                code: tag.code,
-                name: tag.name,
-                course: tag.course,
-                period: String(tag.period)
+                code: subject.code,
+                name: subject.name,
+                course: subject.course,
+                period: String(subject.period)
             }])
             .execute();
         })
@@ -23,7 +23,7 @@ export class seedSubjectTags1627526754479 implements MigrationInterface {
     public async down(queryRunner: QueryRunner): Promise<void> {
         createQueryBuilder()
         .delete()
-        .from(SubjectTag)
+        .from(Subject)
         .execute()
     }
 }

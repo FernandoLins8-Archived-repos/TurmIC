@@ -1,9 +1,9 @@
 import { Request, Response } from 'express'
 import { validationResult } from 'express-validator'
 
-import SubjectTagServices from '../service/SubjectTagServices'
+import SubjectServices from '../service/SubjectServices'
 
-class SubjectTagController {
+class SubjectController {
   async create(req: Request, res: Response) {
 
     const errors = validationResult(req)
@@ -13,16 +13,16 @@ class SubjectTagController {
     
     try {
       const { code, name, course, period } = req.body
-      const subjectTagService = new SubjectTagServices()
+      const subjectService = new SubjectServices()
 
-      const subjectTag = await subjectTagService.createSubjectTag({
+      const subject = await subjectService.createSubject({
         code,
         name,
         course,
         period
       })
       
-      return res.json(subjectTag)
+      return res.json(subject)
 
     } catch(err) {
       console.error(err.message)
@@ -32,10 +32,10 @@ class SubjectTagController {
 
   async index(req: Request, res: Response) {
     try {
-      const subjectTagService = new SubjectTagServices()
-      const subjectTags = await subjectTagService.showSubjectTags()
+      const subjectService = new SubjectServices()
+      const subjects = await subjectService.showSubjects()
 
-      return res.json(subjectTags)
+      return res.json(subjects)
 
     } catch(err) {
       console.error(err.message)
@@ -44,4 +44,4 @@ class SubjectTagController {
   }
 }
 
-export default SubjectTagController
+export default SubjectController

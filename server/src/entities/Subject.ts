@@ -1,7 +1,7 @@
 import { Column, Entity, PrimaryColumn } from 'typeorm';
 
-@Entity('subject_tag')
-class SubjectTag {
+@Entity('subject')
+class Subject {
   @PrimaryColumn()
   code: string
 
@@ -15,4 +15,4 @@ class SubjectTag {
   period: string
 }
 
-export default SubjectTag
+export default Subject

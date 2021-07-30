@@ -2,7 +2,7 @@ import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryColumn } from 
 import { v4 as uuid } from 'uuid'
 
 import Instructor from "./Instructor";
-import SubjectTag from "./SubjectTag";
+import Subject from "./Subject";
 import ExtraLink from './ExtraLink';
 import Schedule from './Schedule';
 
@@ -30,14 +30,14 @@ class Group {
   site: string
 
   @Column()
-  subject_tag_code: string
+  subject_code: string
 
   @Column()
   instructor_email: string
 
-  @JoinColumn({ name: 'subject_tag_code' })
-  @ManyToOne(type => SubjectTag)
-  subject_tag: SubjectTag
+  @JoinColumn({ name: 'subject_code' })
+  @ManyToOne(type => Subject)
+  subject: Subject
 
   @JoinColumn({ name: 'instructor_email' })
   @ManyToOne(type => Instructor)

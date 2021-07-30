@@ -41,7 +41,7 @@ export class createGroup1627443775726 implements MigrationInterface {
                     isNullable: true,
                 },
                 {
-                    name: 'subject_tag_code',
+                    name: 'subject_code',
                     type: 'varchar'
                 },
                 {
@@ -51,9 +51,9 @@ export class createGroup1627443775726 implements MigrationInterface {
             ],
             foreignKeys: [
                 {
-                    name: 'GroupSubjectTagFK',
-                    columnNames: ['subject_tag_code'],
-                    referencedTableName: 'subject_tag',
+                    name: 'GroupSubjectFK',
+                    columnNames: ['subject_code'],
+                    referencedTableName: 'subject',
                     referencedColumnNames: ['code'],
                     onUpdate: 'CASCADE',
                     onDelete: 'CASCADE'

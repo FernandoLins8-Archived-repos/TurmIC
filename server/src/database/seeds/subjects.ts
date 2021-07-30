@@ -1,4 +1,4 @@
-export const courseTags = [
+export const courseSubjects = [
   {
     "period": 1,
     "code":	"COMP359",

@@ -2,7 +2,7 @@ import express from 'express'
 import { check } from 'express-validator'
 
 import InstructorController from './controllers/InstructorController'
-import SubjectTagController from './controllers/SubjectTagController'
+import SubjectController from './controllers/SubjectController'
 import GroupController from './controllers/GroupController'
 import ExtraLinkController from './controllers/ExtraLinkController'
 import ScheduleController from './controllers/ScheduleController'
@@ -10,13 +10,13 @@ import ScheduleController from './controllers/ScheduleController'
 const routes = express.Router()
 
 const instructorController = new InstructorController()
-const subjectTagController = new SubjectTagController()
+const subjectController = new SubjectController()
 const groupController = new GroupController()
 const extraLinkController = new ExtraLinkController()
 const scheduleController = new ScheduleController()
 
 routes.get('/instructor', instructorController.index)
-routes.get('/subject-tag', subjectTagController.index)
+routes.get('/subject', subjectController.index)
 routes.get('/group', groupController.index)
 
 routes.post('/instructor', [
@@ -24,12 +24,12 @@ routes.post('/instructor', [
   check('email', 'Email is required').not().isEmpty(),
 ], instructorController.create)
 
-routes.post('/subject-tag', [
+routes.post('/subject', [
   check('code', 'Code is required').not().isEmpty(),
   check('name', 'Name is required').not().isEmpty(),
   check('course', 'Course is required').not().isEmpty(),
   check('period', 'Period is required').not().isEmpty(),
-], subjectTagController.create)
+], subjectController.create)
 
 routes.post('/group', [
   check('semester', 'Semester is required').not().isEmpty(),

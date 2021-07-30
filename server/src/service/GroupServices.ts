@@ -33,7 +33,7 @@ class GroupServices {
       classroom,
       meet,
       site,
-      subject_tag_code: code,
+      subject_code: code,
       instructor_email: email,
     })
 
@@ -47,7 +47,7 @@ class GroupServices {
     
     const groups = await groupRepository.find({
       select: ['id', 'semester'],
-      relations: ['instructor', 'schedule', 'subject_tag', 'extra_links'],
+      relations: ['instructor', 'schedule', 'subject', 'extra_links'],
     })
 
     return groups
