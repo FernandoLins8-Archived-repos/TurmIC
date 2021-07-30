@@ -34,7 +34,7 @@ const Home: React.FC = () => {
       </Header>
       <Body>
         <List>
-          {listItems}
+          {listItems && "Sem resultados"}
         </List>
       </Body>
     </Container>
