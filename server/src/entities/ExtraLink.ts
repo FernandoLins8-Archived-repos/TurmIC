@@ -3,8 +3,8 @@ import { v4 as uuid } from 'uuid'
 
 import Subject from './Subject';
 
-@Entity('other_links')
-class OtherLink{
+@Entity('extra_link')
+class ExtraLink{
   @PrimaryColumn()
   id: string
 
@@ -28,4 +28,4 @@ class OtherLink{
   }
 }
 
-export default OtherLink
+export default ExtraLink

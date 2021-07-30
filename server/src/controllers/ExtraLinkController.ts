@@ -1,21 +1,21 @@
 import { Request, Response } from 'express'
 
-import OtherLinksServices from '../service/OtherLinksServices'
+import ExtraLinkServices from '../service/ExtraLinkServices'
 
-class OtherLinksController {
+class ExtraLinkController {
   async create(req: Request, res: Response) {
     try {
       const { name, link } = req.body
       const subjectId = req.params.id
-      const otherLinksServices = new OtherLinksServices()
+      const extraLinkServices = new ExtraLinkServices()
 
-      const otherLink = await otherLinksServices.createLink(
+      const extraLink = await extraLinkServices.createLink(
         subjectId,
         name,
         link
       )
 
-      return res.json(otherLink)
+      return res.json(extraLink)
 
     } catch(err) {
       console.error(err.message)
@@ -24,4 +24,4 @@ class OtherLinksController {
   }
 }
 
-export default OtherLinksController
+export default ExtraLinkController

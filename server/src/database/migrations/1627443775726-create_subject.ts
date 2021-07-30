@@ -45,7 +45,7 @@ export class createSubject1627443775726 implements MigrationInterface {
                     type: 'varchar'
                 },
                 {
-                    name: 'professor_email',
+                    name: 'instructor_email',
                     type: 'varchar',
                 },
             ],
@@ -59,9 +59,9 @@ export class createSubject1627443775726 implements MigrationInterface {
                     onDelete: 'CASCADE'
                 },
                 {
-                    name: 'SubjectProfessorFK',
-                    columnNames: ['professor_email'],
-                    referencedTableName: 'professor',
+                    name: 'SubjectInstructorFK',
+                    columnNames: ['instructor_email'],
+                    referencedTableName: 'instructor',
                     referencedColumnNames: ['email'],
                     onUpdate: 'CASCADE',
                     onDelete: 'CASCADE'

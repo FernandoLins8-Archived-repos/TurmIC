@@ -34,7 +34,7 @@ class SubjectServices {
       meet,
       site,
       subject_tag_code: code,
-      professor_email: email,
+      instructor_email: email,
     })
 
     await subjectRepository.save(newSubject)
@@ -47,7 +47,7 @@ class SubjectServices {
     
     const subjects = await subjectRepository.find({
       select: ['id', 'semester'],
-      relations: ['professor', 'schedule', 'subject_tag', 'other_links'],
+      relations: ['instructor', 'schedule', 'subject_tag', 'extra_links'],
     })
 
     return subjects

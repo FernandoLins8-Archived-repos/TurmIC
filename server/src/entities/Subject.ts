@@ -3,7 +3,7 @@ import { v4 as uuid } from 'uuid'
 
 import Instructor from "./Instructor";
 import SubjectTag from "./SubjectTag";
-import OtherLink from './OtherLink';
+import ExtraLink from './ExtraLink';
 import Schedule from './Schedule';
 
 @Entity('subject')
@@ -44,8 +44,8 @@ class Subject {
   instructor: Instructor
 
   @JoinColumn()
-  @OneToMany(type => OtherLink, link => link.subject)
-  other_links: OtherLink[]
+  @OneToMany(type => ExtraLink, link => link.subject)
+  extra_links: ExtraLink[]
 
   @JoinColumn()
   @OneToMany(type => Schedule, link => link.subject)

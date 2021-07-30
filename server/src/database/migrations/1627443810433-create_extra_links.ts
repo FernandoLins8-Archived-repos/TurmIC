@@ -1,10 +1,10 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class createOtherLinks1627443810433 implements MigrationInterface {
+export class createExtraLink1627443810433 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(new Table({
-            name: 'other_links',
+            name: 'extra_link',
             columns: [
                 {
                     name: 'id',
@@ -26,7 +26,7 @@ export class createOtherLinks1627443810433 implements MigrationInterface {
             ],
             foreignKeys: [
                 {
-                    name: 'OtherLinksSubjectFK',
+                    name: 'ExtraLinkSubjectFK',
                     columnNames: ['subject_id'],
                     referencedTableName: 'subject',
                     referencedColumnNames: ['id'],
@@ -38,7 +38,7 @@ export class createOtherLinks1627443810433 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable('other_links')
+        await queryRunner.dropTable('extra_link')
     }
 
 }
