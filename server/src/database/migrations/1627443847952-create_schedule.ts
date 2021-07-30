@@ -24,15 +24,15 @@ export class createSchedule1627443847952 implements MigrationInterface {
                     type: 'varchar',
                 },
                 {
-                    name: 'subject_id',
+                    name: 'group_id',
                     type: 'varchar',
                 },
             ],
             foreignKeys: [
                 {
-                    name: 'ScheduleSubjectFK',
-                    columnNames: ['subject_id'],
-                    referencedTableName: 'subject',
+                    name: 'ScheduleGroupFK',
+                    columnNames: ['group_id'],
+                    referencedTableName: 'group',
                     referencedColumnNames: ['id'],
                     onUpdate: 'CASCADE',
                     onDelete: 'CASCADE'

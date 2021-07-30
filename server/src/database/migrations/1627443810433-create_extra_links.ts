@@ -20,15 +20,15 @@ export class createExtraLink1627443810433 implements MigrationInterface {
                     type: 'varchar',
                 },
                 {
-                    name: 'subject_id',
+                    name: 'group_id',
                     type: 'varchar',
                 },
             ],
             foreignKeys: [
                 {
-                    name: 'ExtraLinkSubjectFK',
-                    columnNames: ['subject_id'],
-                    referencedTableName: 'subject',
+                    name: 'ExtraLinkGroupFK',
+                    columnNames: ['group_id'],
+                    referencedTableName: 'group',
                     referencedColumnNames: ['id'],
                     onUpdate: 'CASCADE',
                     onDelete: 'CASCADE'

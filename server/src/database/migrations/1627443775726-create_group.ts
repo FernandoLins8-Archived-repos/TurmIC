@@ -1,10 +1,10 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class createSubject1627443775726 implements MigrationInterface {
+export class createGroup1627443775726 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(new Table({
-            name: 'subject',
+            name: 'group',
             columns: [
                 {
                     name: 'id',
@@ -51,7 +51,7 @@ export class createSubject1627443775726 implements MigrationInterface {
             ],
             foreignKeys: [
                 {
-                    name: 'SubjectSubjectTagFK',
+                    name: 'GroupSubjectTagFK',
                     columnNames: ['subject_tag_code'],
                     referencedTableName: 'subject_tag',
                     referencedColumnNames: ['code'],
@@ -59,7 +59,7 @@ export class createSubject1627443775726 implements MigrationInterface {
                     onDelete: 'CASCADE'
                 },
                 {
-                    name: 'SubjectInstructorFK',
+                    name: 'GroupInstructorFK',
                     columnNames: ['instructor_email'],
                     referencedTableName: 'instructor',
                     referencedColumnNames: ['email'],
@@ -71,7 +71,7 @@ export class createSubject1627443775726 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable('subject')
+        await queryRunner.dropTable('group')
     }
 
 }

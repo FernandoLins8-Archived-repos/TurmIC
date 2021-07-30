@@ -6,11 +6,11 @@ class ScheduleController {
   async create(req: Request, res: Response) {
     try {
       const { day, start, finish } = req.body
-      const subjectId = req.params.id
+      const groupId = req.params.id
       const scheduleService = new ScheduleServices()
 
       const service = await scheduleService.createSchedule({
-        subjectId,
+        groupId,
         day,
         start,
         finish

@@ -1,5 +1,5 @@
 import { Column, Entity, JoinColumn, OneToMany, PrimaryColumn } from "typeorm";
-import Subject from "./Subject";
+import Group from "./Group";
 
 @Entity('instructor')
 class Instructor {
@@ -13,8 +13,8 @@ class Instructor {
   site: string
 
   @JoinColumn()
-  @OneToMany(type => Subject, subject => subject.instructor)
-  subject: Subject[]
+  @OneToMany(type => Group, group => group.instructor)
+  group: Group[]
 }
 
 export default Instructor

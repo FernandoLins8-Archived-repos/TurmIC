@@ -1,9 +1,9 @@
 import { Request, Response } from 'express'
 import { validationResult } from 'express-validator'
 
-import SubjectServices  from '../service/SubjectServices'
+import GroupServices  from '../service/GroupServices'
 
-class SubjectController {
+class GroupController {
   async create(req: Request, res: Response) {
     const errors = validationResult(req)
     if(!errors.isEmpty()) {
@@ -22,9 +22,9 @@ class SubjectController {
         email
       } = req.body
       
-      const subjectService = new SubjectServices()
+      const groupService = new GroupServices()
 
-      const subject = await subjectService.createSubject({
+      const group = await groupService.createGroup({
         semester,
         whatsapp,
         telegram,
@@ -35,7 +35,7 @@ class SubjectController {
         email
       })
 
-      return res.json(subject)
+      return res.json(group)
 
     } catch(err) {
       console.error(err.message)
@@ -45,10 +45,10 @@ class SubjectController {
 
   async index(req: Request, res: Response) {
     try {
-      const subjectService = new SubjectServices()
-      const subjects = await subjectService.showSubjects()
+      const groupService = new GroupServices()
+      const groups = await groupService.showGroups()
 
-      return res.json(subjects)
+      return res.json(groups)
 
     } catch(err) {
       console.error(err.message)
@@ -57,4 +57,4 @@ class SubjectController {
   }
 }
 
-export default SubjectController
+export default GroupController

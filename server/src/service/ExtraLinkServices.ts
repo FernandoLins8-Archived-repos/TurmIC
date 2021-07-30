@@ -3,11 +3,11 @@ import { getCustomRepository } from 'typeorm'
 import ExtraLinkRepository from '../repositories/ExtraLinkRepository'
 
 class ExtraLinkServices {
-  async createLink(subject: string, name: string, link: string) {
+  async createLink(groupId: string, name: string, link: string) {
     const extraLinkRepository = getCustomRepository(ExtraLinkRepository)
 
     const newLink = extraLinkRepository.create({
-      subject_id: subject,
+      group_id: groupId,
       name,
       link
     })

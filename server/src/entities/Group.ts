@@ -6,8 +6,8 @@ import SubjectTag from "./SubjectTag";
 import ExtraLink from './ExtraLink';
 import Schedule from './Schedule';
 
-@Entity('subject')
-class Subject {
+@Entity('group')
+class Group {
   @PrimaryColumn()
   id: string
 
@@ -44,11 +44,11 @@ class Subject {
   instructor: Instructor
 
   @JoinColumn()
-  @OneToMany(type => ExtraLink, link => link.subject)
+  @OneToMany(type => ExtraLink, link => link.group)
   extra_links: ExtraLink[]
 
   @JoinColumn()
-  @OneToMany(type => Schedule, link => link.subject)
+  @OneToMany(type => Schedule, link => link.group)
   schedule: Schedule[]
 
   constructor() {
@@ -58,4 +58,4 @@ class Subject {
   }
 }
 
-export default Subject
+export default Group

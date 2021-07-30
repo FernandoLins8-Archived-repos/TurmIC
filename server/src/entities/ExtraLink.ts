@@ -1,7 +1,7 @@
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm';
 import { v4 as uuid } from 'uuid'
 
-import Subject from './Subject';
+import Group from './Group';
 
 @Entity('extra_link')
 class ExtraLink{
@@ -15,11 +15,11 @@ class ExtraLink{
   link: string
 
   @Column()
-  subject_id: string
+  group_id: string
 
-  @JoinColumn({ name: 'subject_id' })
-  @ManyToOne(type => Subject)
-  subject: Subject
+  @JoinColumn({ name: 'group_id' })
+  @ManyToOne(type => Group)
+  group: Group
 
   constructor() {
     if(!this.id) {

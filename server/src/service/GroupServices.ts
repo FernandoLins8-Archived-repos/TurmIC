@@ -1,8 +1,8 @@
 import { getCustomRepository } from 'typeorm'
 
-import SubjectRepository from '../repositories/SubjectRepository'
+import GroupRepository from '../repositories/GroupRepository'
 
-interface ISubjectCreateReq {
+interface IGroupCreateReq {
   semester: string
   whatsapp?: string
   telegram?: string
@@ -13,8 +13,8 @@ interface ISubjectCreateReq {
   email: string
 }
 
-class SubjectServices {
-  async createSubject({
+class GroupServices {
+  async createGroup({
     semester,
     whatsapp,
     telegram,
@@ -23,10 +23,10 @@ class SubjectServices {
     site,
     code,
     email,
-  } : ISubjectCreateReq) {
-    const subjectRepository = getCustomRepository(SubjectRepository)
+  } : IGroupCreateReq) {
+    const groupRepository = getCustomRepository(GroupRepository)
 
-    const newSubject = subjectRepository.create({
+    const newGroup = groupRepository.create({
       semester,
       whatsapp,
       telegram,
@@ -37,21 +37,21 @@ class SubjectServices {
       instructor_email: email,
     })
 
-    await subjectRepository.save(newSubject)
+    await groupRepository.save(newGroup)
 
-    return newSubject
+    return newGroup
   }
 
-  async showSubjects() {
-    const subjectRepository = getCustomRepository(SubjectRepository)
+  async showGroups() {
+    const groupRepository = getCustomRepository(GroupRepository)
     
-    const subjects = await subjectRepository.find({
+    const groups = await groupRepository.find({
       select: ['id', 'semester'],
       relations: ['instructor', 'schedule', 'subject_tag', 'extra_links'],
     })
 
-    return subjects
+    return groups
   }
 }
 
-export default SubjectServices
+export default GroupServices

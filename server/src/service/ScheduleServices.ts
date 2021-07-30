@@ -3,18 +3,18 @@ import { getCustomRepository } from 'typeorm'
 import ScheduleRepository from '../repositories/ScheduleRepository'
 
 interface IScheduleService {
-  subjectId: string
+  groupId: string
   day: string
   start: string
   finish: string
 }
 
 class ScheduleServices {
-  async createSchedule({ subjectId, day, start, finish } : IScheduleService) {
+  async createSchedule({ groupId, day, start, finish } : IScheduleService) {
     const scheduleRepository = getCustomRepository(ScheduleRepository)
 
     const newService = scheduleRepository.create({
-      subject_id: subjectId,
+      group_id: groupId,
       week_day: day,
       start,
       finish
