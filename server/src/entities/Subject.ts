@@ -1,7 +1,7 @@
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryColumn } from 'typeorm';
 import { v4 as uuid } from 'uuid'
 
-import Professor from "./Professor";
+import Instructor from "./Instructor";
 import SubjectTag from "./SubjectTag";
 import OtherLink from './OtherLink';
 import Schedule from './Schedule';
@@ -33,15 +33,15 @@ class Subject {
   subject_tag_code: string
 
   @Column()
-  professor_email: string
+  instructor_email: string
 
   @JoinColumn({ name: 'subject_tag_code' })
   @ManyToOne(type => SubjectTag)
   subject_tag: SubjectTag
 
-  @JoinColumn({ name: 'professor_email' })
-  @ManyToOne(type => Professor)
-  professor: Professor
+  @JoinColumn({ name: 'instructor_email' })
+  @ManyToOne(type => Instructor)
+  instructor: Instructor
 
   @JoinColumn()
   @OneToMany(type => OtherLink, link => link.subject)

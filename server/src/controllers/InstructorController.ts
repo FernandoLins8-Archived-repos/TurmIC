@@ -1,9 +1,9 @@
 import { Request, Response } from 'express'
 import { validationResult } from 'express-validator'
 
-import ProfessorServices from '../service/ProfessorServices'
+import InstructorServices from '../service/InstructorServices'
 
-class ProfessorController {
+class InstructorController {
   async create(req: Request, res: Response) {
 
     const errors = validationResult(req)
@@ -13,15 +13,15 @@ class ProfessorController {
     
     try {
       const { name, email, site } = req.body
-      const professorService = new ProfessorServices()
+      const instructorService = new InstructorServices()
 
-      const professor = await professorService.createProfessor({
+      const instructor = await instructorService.createInstructor({
         name, 
         email, 
         site
       })
       
-      return res.json(professor)
+      return res.json(instructor)
 
     } catch(err) {
       console.error(err.message)
@@ -31,10 +31,10 @@ class ProfessorController {
 
   async index(req: Request, res: Response) {
     try {
-      const professorService = new ProfessorServices()
-      const professors = await professorService.showProfessors()
+      const instructorService = new InstructorServices()
+      const instructors = await instructorService.showInstructors()
 
-      return res.json(professors)
+      return res.json(instructors)
 
     } catch(err) {
       console.error(err.message)
@@ -43,4 +43,4 @@ class ProfessorController {
   }
 }
 
-export default ProfessorController
+export default InstructorController

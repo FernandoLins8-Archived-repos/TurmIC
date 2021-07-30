@@ -1,8 +1,8 @@
 import { Column, Entity, JoinColumn, OneToMany, PrimaryColumn } from "typeorm";
 import Subject from "./Subject";
 
-@Entity('professor')
-class Professor {
+@Entity('instructor')
+class Instructor {
   @Column()
   name: string
 
@@ -13,8 +13,8 @@ class Professor {
   site: string
 
   @JoinColumn()
-  @OneToMany(type => Subject, subject => subject.professor)
+  @OneToMany(type => Subject, subject => subject.instructor)
   subject: Subject[]
 }
 
-export default Professor
+export default Instructor

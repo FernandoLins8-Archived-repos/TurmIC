@@ -1,18 +1,18 @@
 import { createQueryBuilder, MigrationInterface, QueryRunner } from 'typeorm';
 
-import Professor from '../../entities/Professor'
-import { professors } from '../seeds/professors'
+import Instructor from '../../entities/Instructor';
+import { instructors } from '../seeds/instructors'
 
-export class seedProfessorInfo1627527707754 implements MigrationInterface {
+export class seedInstructorInfo1627527707754 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
-        professors.forEach(professor => {
+        instructors.forEach(instructor => {
             createQueryBuilder()
             .insert()
-            .into(Professor)
+            .into(Instructor)
             .values([{ 
-                name: professor.name,
-                email: professor.email
+                name: instructor.name,
+                email: instructor.email
             }])
             .execute();
         })
@@ -21,7 +21,7 @@ export class seedProfessorInfo1627527707754 implements MigrationInterface {
     public async down(queryRunner: QueryRunner): Promise<void> {
         createQueryBuilder()
         .delete()
-        .from(Professor)
+        .from(Instructor)
         .execute()
     }
 
