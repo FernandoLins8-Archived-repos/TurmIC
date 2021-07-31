@@ -9,7 +9,7 @@ const Home: React.FC = () => {
   const [ items, setItems ] = useState<any[]>([]);
 
   useEffect(() => {
-    api.get('/subject-tag').then((response) => {
+    api.get('/subject').then((response) => {
 
       setItems(response.data);
 
