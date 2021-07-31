@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+interface Props {
+  selected?: boolean;
+}
+
 export const Container = styled.div`
   width: 100%;
 `;
@@ -45,10 +49,24 @@ export const Body = styled.div`
   top: 56px;
 
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 
   padding: 48px 48px;
+`;
+
+export const Filter = styled.div`
+  
+`;
+
+export const FilterButton = styled.button<Props>`
+  background: ${(props) => (props.selected) ? "var(--gray-700)" : "#fff"};
+  padding: 8px 16px;
+  border: 1px solid var(--gray-300);
+  border-radius: 16px;
+  margin: 8px;
+  color: ${(props) => (props.selected) ? "#fff" : "var(--gray-700)"};
 `;
 
 export const List = styled.div` 
