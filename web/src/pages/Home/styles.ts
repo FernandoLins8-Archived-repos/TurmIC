@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 
-interface Props {
+interface ICourseButtonProps {
   selected?: boolean;
+}
+
+interface IPeriodButtonProps extends ICourseButtonProps {
+  id: string;
 }
 
 export const Container = styled.div`
@@ -14,7 +18,7 @@ export const Header = styled.div`
   justify-content: center;
   background: white;
   width: 100%;
-  height: 64px;
+  height: 80px;
   position: fixed;
   top: 0;
   z-index: 2;
@@ -53,14 +57,15 @@ export const Body = styled.div`
   align-items: center;
   justify-content: center;
 
-  padding: 48px 48px;
+  padding: 32px 48px;
 `;
 
 export const Filter = styled.div`
-  
+  padding-bottom: 24px;
+  text-align: center;
 `;
 
-export const FilterButton = styled.button<Props>`
+export const FilterCourseButton = styled.button<ICourseButtonProps>`
   background: ${(props) => (props.selected) ? "var(--gray-700)" : "#fff"};
   padding: 8px 16px;
   border: 1px solid var(--gray-300);
@@ -69,31 +74,39 @@ export const FilterButton = styled.button<Props>`
   color: ${(props) => (props.selected) ? "#fff" : "var(--gray-700)"};
 `;
 
-export const List = styled.div` 
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+export const FilterPeriodButton = styled(FilterCourseButton)<IPeriodButtonProps>`
 
-  max-width: 768px;
+`;
+
+export const List = styled.div` 
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 16px 20px;
+  padding: 24px;
 `;
 
 export const Item = styled.div`
-  padding: 24px 48px 48px 24px;
+  padding: 24px 20px;
   width: 368px;
-  margin-bottom: 24px;
+
+  text-align: left;
 
   border-radius: 8px;
   border: 1px solid var(--gray-300);
   background: white;
 
-  .separator {
-    margin: 0 8px;
-  }
+  transition: all 0.2s;
+
+  &:hover {
+      border: 1px solid #4e6db2;
+      cursor: pointer;
+      transform: scale(1.05);
+    }
 
   .subject {
     color: var(--gray-700);
     font-weight: bold;
-    font-size: 18px;
+    font-size: 17px;
   }
 
   .code {
@@ -103,9 +116,15 @@ export const Item = styled.div`
 
   .teacher {
     color: var(--gray-600);
-    font-size: 16px;
-    display: block;
+    font-size: 15px;
     margin-top: 8px;
   }
-`;
 
+  .schedule {
+    color: var(--gray-600);
+    display: block;
+    font-size: 15px;
+    font-style: italic;
+    line-height: 1.3;
+  }
+`;

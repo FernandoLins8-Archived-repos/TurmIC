@@ -9,45 +9,124 @@ import {
   Item, 
   Body, 
   Filter, 
-  FilterButton 
+  FilterCourseButton, 
+  FilterPeriodButton
 } from './styles';
 
+interface ICourseGroups {
+  id: string
+  instructor: {
+    name: string
+    email: string
+  }
+  schedule: {
+      week_day: string
+      id: string
+      start: string
+      finish: string
+  } []
+  subject: {
+    code: string
+    course: string
+    name: string
+    period: string
+  }
+}
+
 const Home: React.FC = () => {
+  const [ courseGroups, setCourseGroups ] = useState<ICourseGroups[]>([]);
+  const [ selectedCourse, setSelectedCourse ] = useState('');
+  const [ selectedPeriod, setSelectedPeriod ] = useState('*');
 
-  const [ items, setItems ] = useState<any[]>([]);
-  const [ data, setData ] = useState<any[]>([]);
-  const [ courseButtonIdSelected, setCourseButtonIdSelected ] = useState("all");
+  const [ groupsToDisplay, setGroupsToDisplay ] = useState<ICourseGroups[]>([])
 
+  const periods = ['*', '1', '2', '3', '4', '5', '6', '7', '8']
+  const courses = [
+    {
+      name: 'Ciência da computação',
+      code: 'CC'
+    },
+    {
+      name: 'Engenharia da computação',
+      code: 'EC'
+    },
+  ]
+  
   useEffect(() => {
-    api.get('/subject').then((response) => {
-
-      setItems(response.data);
-      setData(response.data);
+    if(!selectedCourse) {
+      return
+    }
+    
+    api.get(`/group/${selectedCourse}`).then((res) => {
+      setCourseGroups(res.data);
+      setGroupsToDisplay(res.data)
+      setSelectedPeriod('*')
 
     }).catch((e) => {
       console.log(e);
     });
-  }, []);
+  }, [selectedCourse]);
 
-  function handleCourseFilter(event: FormEvent) {
-
-    const target = event.target as HTMLElement;
-    setCourseButtonIdSelected(target.id);
-
-    if(target.id != "all") {
-      setItems(data.filter((item) => item.course === target.id));
-    }else{
-      setItems(data);
+  useEffect(() => {
+    if(selectedPeriod === '*') {
+      setGroupsToDisplay(courseGroups)
+      return
     }
 
+    const filteredGroups = courseGroups.filter(group => group.subject.period === selectedPeriod)
+    setGroupsToDisplay(filteredGroups)
+
+  }, [courseGroups, selectedPeriod]);
+
+
+  function handleCourseFilter(event: FormEvent) {
+    const target = event.target as HTMLElement;
+    setSelectedCourse(target.id);
   }
 
-  const listItems = items.map((item) => 
-    <Item key={item.code}>
-      <span className="subject">{item.name}</span><span className="separator">&#183;</span> 
-      <span className="code">{item.code}</span><br/>
-      <span className="teacher">Lorem Ipsum</span>
-    </Item>
+  function handlePeriod(event: FormEvent) {
+    const target = event.target as HTMLElement;
+    setSelectedPeriod(target.id);
+  }
+
+  const courseButtons = courses.map(course => (
+    <FilterCourseButton 
+      id={course.code}
+      onClick={handleCourseFilter}
+      selected={(selectedCourse === course.code)}
+    >
+      {course.name}
+    </FilterCourseButton>
+  ))
+
+  const periodButtonsDiv = 
+    <div> {
+      periods.map(period => (
+        <FilterPeriodButton 
+          id={period}
+          onClick={handlePeriod}
+          selected={selectedPeriod === period}
+        >
+          {period}
+        </FilterPeriodButton>
+      ))}
+    </div>
+
+  const listItems = groupsToDisplay.map((subject) => 
+  <Item key={subject.id}>
+    <div className="subject-info">
+      <span className="subject">{subject.subject.name}</span> <br />
+      <span className="code">{subject.subject.code}</span>
+    </div>
+
+    <p className="teacher"><strong>Prof. </strong>{subject.instructor.name}</p> <br />
+
+    {
+      subject.schedule.map(schedule => (
+        <p className="schedule">{schedule.week_day} {schedule.start} - {schedule.finish}</p>
+      ))
+    }
+  </Item>
   );
 
   return (
@@ -58,34 +137,12 @@ const Home: React.FC = () => {
       </Header>
       <Body>
         <Filter>
-
-          <FilterButton 
-            id="CC"
-            onClick={handleCourseFilter}
-            selected={(courseButtonIdSelected === "CC")}
-          >
-            Ciência da computação
-          </FilterButton>
-
-          <FilterButton
-            id="EC"
-            onClick={handleCourseFilter}
-            selected={(courseButtonIdSelected === "EC")}
-          >
-            Engenharia da computação
-          </FilterButton>
-
-          <FilterButton
-            id="all"
-            onClick={handleCourseFilter}
-            selected={(courseButtonIdSelected === "all")}
-          >
-            Todos
-          </FilterButton>
-
+          {courseButtons}
+          {periodButtonsDiv}
         </Filter>
         <List>
-          {(listItems) ? listItems : "Sem resultados"}
+          {(selectedCourse === '') ? 'Selecione um curso e período.' : ''}
+          {(selectedCourse !== '' && listItems.length === 0) ? 'Sem resultados' : listItems }
         </List>
       </Body>
     </Container>
