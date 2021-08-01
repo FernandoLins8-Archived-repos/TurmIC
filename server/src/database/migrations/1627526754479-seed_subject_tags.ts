@@ -1,12 +1,12 @@
 import { createQueryBuilder, MigrationInterface, QueryRunner } from 'typeorm';
 
 import Subject from '../../entities/Subject'
-import { courseSubjects } from '../seeds/subjects'
+import { coursesSubjects } from '../seeds/subjects'
 
 export class seedSubject1627526754479 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
-        courseSubjects.forEach(subject => {
+        coursesSubjects.forEach(subject => {
             createQueryBuilder()
             .insert()
             .into(Subject)
