@@ -213,35 +213,35 @@ export const coursesSubjects = [
     "period": 1,
     "code": "ECOM002",	
     "name": "Programação 1",
-    "course": "}EC",
+    "course": "EC",
     "ch": "60h"
   },
   {
     "period": 1,
     "code": "ECOM003",	
     "name": "Matemática Discreta",
-    "course": "}EC",
+    "course": "EC",
     "ch": "60h"
   },
   {
     "period": 1,
     "code": "ECOM004",	
     "name": "Cálculo 1",
-    "course": "}EC",
+    "course": "EC",
     "ch": "60h"
   },
   {
     "period": 1,
     "code": "ECOM005",	
     "name": "Geometria Analítica",
-    "course": "}EC",
+    "course": "EC",
     "ch": "60h"
   },
   {
     "period": 1,
     "code": "ECOM006",	
     "name": "Introdução à Eng. da Computação",
-    "course": "}EC",
+    "course": "EC",
     "ch": "60h"
   },
   {
