@@ -17,7 +17,9 @@ const scheduleController = new ScheduleController()
 
 routes.get('/instructor', instructorController.index)
 routes.get('/subject', subjectController.index)
+
 routes.get('/group', groupController.index)
+routes.get('/group/:id', groupController.indexByCourse)
 
 routes.post('/instructor', [
   check('name', 'Name is required').not().isEmpty(),

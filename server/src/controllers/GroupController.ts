@@ -55,6 +55,20 @@ class GroupController {
       res.status(500).send('Server Error')
     }
   }
+
+  async indexByCourse(req: Request, res: Response) {
+    try {
+      const groupService = new GroupServices()
+      const courseId = req.params.id
+      
+      const groups = await groupService.showGroupsByCourse(courseId)
+
+      return res.json(groups)
+    } catch(err) {
+      console.error(err.message)
+      res.status(500).send('Server Error')
+    }
+  }
 }
 
 export default GroupController

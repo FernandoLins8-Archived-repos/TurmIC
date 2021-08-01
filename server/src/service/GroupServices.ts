@@ -52,6 +52,27 @@ class GroupServices {
 
     return groups
   }
+
+  async showGroupsByCourse(courseId: string) {
+    const groupRepository = getCustomRepository(GroupRepository)
+
+    const groups = await groupRepository.createQueryBuilder('group')
+    .leftJoin("group.subject", "subject")
+    .leftJoin("group.instructor", "instructor")
+    .leftJoin("group.schedule", "schedule")
+    .select([
+      'subject',
+      'instructor.name',
+      'group.id', 
+      'schedule.week_day',
+      'schedule.start',
+      'schedule.finish',
+    ])
+    .where('subject.course = :course', { course: courseId } )
+    .getMany();
+    
+    return groups
+  }
 }
 
 export default GroupServices
