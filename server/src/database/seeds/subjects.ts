@@ -393,49 +393,49 @@ export const coursesSubjects = [
   },
   {
     "period": 5,
-    "code": "ECOM027	",
+    "code": "ECOM027",
     "name": "Projeto e Análise de Algorítmos",
     "course": "EC",
     "ch": "60h"
   },
   {
     "period": 5,
-    "code": "ECOM028	",
+    "code": "ECOM028",
     "name": "Circuitos Elétricos",
     "course": "EC",
     "ch": "60h"
   },
   {
     "period": 5,
-    "code": "ECOM029	",
+    "code": "ECOM029",
     "name": "Redes de Computadores",
     "course": "EC",
     "ch": "60h"
   },
   {
     "period": 5,
-    "code": "ECOM030	",
+    "code": "ECOM030",
     "name": "Sinais e Sistemas",
     "course": "EC",
     "ch": "90h"
   },
   {
     "period": 5,
-    "code": "ECOM031	",
+    "code": "ECOM031",
     "name": "Inteligência Artificial",
     "course": "EC",
     "ch": "60h"
   },
   {
     "period": 5,
-    "code": "ECOM032	",
+    "code": "ECOM032",
     "name": "Sistemas Operacionais",
     "course": "EC",
     "ch": "60h"
   },
   {
     "period": 5,
-    "code": "ECOM033	",
+    "code": "ECOM033",
     "name": "Teoria dos Grafos",
     "course": "EC",
     "ch": "30h"
@@ -533,14 +533,14 @@ export const coursesSubjects = [
   },
   {
     "period": 8,
-    "code": "ECOM039	",
+    "code": "ECOM039",
     "name": "Computação Gráfica e Processamento de Imagens",
     "course": "EC",
     "ch": "60h"
   },
   {
     "period": 8,
-    "code": "ECOM042	",
+    "code": "ECOM042",
     "name": "Sistemas Embarcados",
     "course": "EC",
     "ch": "60h"
@@ -561,14 +561,14 @@ export const coursesSubjects = [
   },
   {
     "period": 8,
-    "code": "ECOM062	",
+    "code": "ECOM062",
     "name": "Robótica",
     "course": "EC",
     "ch": "60h"
   },
   {
     "period": 8,
-    "code": "ECOM119	",
+    "code": "ECOM119",
     "name": "Mecânica dos Sólidos ",
     "course": "EC",
     "ch": "60h"
