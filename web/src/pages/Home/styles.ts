@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { GoPlus } from 'react-icons/go';
 
 interface ICourseButtonProps {
   selected?: boolean;
@@ -44,6 +45,26 @@ export const Header = styled.div`
       border: 1px solid #709dff;
     }
   }
+
+  a {
+    border-radius: 50%;
+    padding: 8px;
+
+    position: absolute;
+    right: 96px;
+
+    &:hover {
+      background: var(--gray-100);
+    }
+  }
+`;
+
+export const PlusIcon = styled(GoPlus)`
+  height: 24px;
+  width: 24px;
+  margin-bottom: -4px;
+  
+  fill: var(--gray-400);
 `;
 
 export const Body = styled.div`
