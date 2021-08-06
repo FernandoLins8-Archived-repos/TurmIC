@@ -1,4 +1,5 @@
-import React, { useState, useEffect, FormEvent, ChangeEvent } from 'react';
+import React, { useState, useEffect, FormEvent } from 'react';
+import { Link } from 'react-router-dom';
 
 import api from '../../services/api';
 
@@ -10,7 +11,8 @@ import {
   Body, 
   Filter, 
   FilterCourseButton, 
-  FilterPeriodButton
+  FilterPeriodButton,
+  PlusIcon
 } from './styles';
 
 interface ICourseGroups {
@@ -155,6 +157,9 @@ const Home: React.FC = () => {
           value={searchTerm}
           onChange={handleInputChange}
         />
+        <Link to="#">
+          <PlusIcon />
+        </Link>
       </Header>
       <Body>
         <Filter>
