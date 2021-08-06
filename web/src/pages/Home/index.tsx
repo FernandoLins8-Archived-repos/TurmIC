@@ -1,4 +1,4 @@
-import React, { useState, useEffect, FormEvent } from 'react';
+import React, { useState, useEffect, FormEvent, ChangeEvent } from 'react';
 
 import api from '../../services/api';
 
@@ -39,6 +39,7 @@ const Home: React.FC = () => {
   const [ selectedPeriod, setSelectedPeriod ] = useState('*');
 
   const [ groupsToDisplay, setGroupsToDisplay ] = useState<ICourseGroups[]>([])
+  const [ searchTerm, setSearchTerm ] = useState('')
 
   const periods = ['*', '1', '2', '3', '4', '5', '6', '7', '8']
   const courses = [
@@ -78,6 +79,17 @@ const Home: React.FC = () => {
 
   }, [courseGroups, selectedPeriod]);
 
+  useEffect(() => {
+    if(!searchTerm) {
+      setGroupsToDisplay(courseGroups)
+      return
+    }
+
+    const filteredGroups = groupsToDisplay
+    .filter(group => group.subject.name.toLowerCase().includes(searchTerm.toLowerCase()))
+    setGroupsToDisplay(filteredGroups)
+
+  }, [courseGroups, groupsToDisplay, searchTerm])
 
   function handleCourseFilter(event: FormEvent) {
     const target = event.target as HTMLElement;
@@ -87,6 +99,10 @@ const Home: React.FC = () => {
   function handlePeriod(event: FormEvent) {
     const target = event.target as HTMLElement;
     setSelectedPeriod(target.id);
+  }
+
+  function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
+    setSearchTerm(event.target.value)
   }
 
   const courseButtons = courses.map(course => (
@@ -133,7 +149,12 @@ const Home: React.FC = () => {
     <Container>
       <Header>
         <h1>TurmIC</h1>
-        <input type="text" placeholder="Pesquisar" />
+        <input 
+          type="text" 
+          placeholder="Pesquisar" 
+          value={searchTerm}
+          onChange={handleInputChange}
+        />
       </Header>
       <Body>
         <Filter>
