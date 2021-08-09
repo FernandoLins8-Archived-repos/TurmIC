@@ -157,7 +157,7 @@ const Home: React.FC = () => {
           value={searchTerm}
           onChange={handleInputChange}
         />
-        <Link to="#">
+        <Link to="/group">
           <PlusIcon />
         </Link>
       </Header>
